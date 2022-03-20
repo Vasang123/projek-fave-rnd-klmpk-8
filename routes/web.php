@@ -26,6 +26,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => 'RoleAdmin'],function(){
     Route::get('/admin',[App\Http\Controllers\HomeController::class, 'admin']);
+    Route::get('/items',[App\Http\Controllers\ItemController::class, 'create']);
+    Route::post('/items',[App\Http\Controllers\ItemController::class, 'store'])->name('storeItems');
+    Route::get('/items/update/{id}',[App\Http\Controllers\ItemController::class, 'edit']);
+    Route::put('/items/update/{id}',[App\Http\Controllers\ItemController::class, 'update'])->name('updateItems');
+    Route::delete('/items/delete/{id}',[App\Http\Controllers\ItemController::class, 'destroy']);
+
 });
 
 Route::group(['middleware' => 'RoleMember'],function(){
