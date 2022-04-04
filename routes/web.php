@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::group(['middleware' => 'RoleAdmin'],function(){
+    // Admin CRUD
     Route::get('/admin',[App\Http\Controllers\HomeController::class, 'admin']);
     Route::get('/items',[App\Http\Controllers\ItemController::class, 'create']);
     Route::post('/items',[App\Http\Controllers\ItemController::class, 'store'])->name('storeItems');
@@ -36,4 +37,6 @@ Route::group(['middleware' => 'RoleAdmin'],function(){
 
 Route::group(['middleware' => 'RoleMember'],function(){
     Route::get('/member',[App\Http\Controllers\HomeController::class, 'member']);
+    Route::get('/edit-profile',[App\Http\Controllers\UserController::class, 'edit'])->name('editProfile');
+    Route::put('/update-profile',[App\Http\Controllers\UserController::class, 'update'])->name('updateProfile');
 });

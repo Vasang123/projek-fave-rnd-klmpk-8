@@ -55,7 +55,7 @@
                             @if (Auth::user()->role ==='admin')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Admin {{ Auth::user()->first_name }}
+                                    Selamat Datang Admin {{ Auth::user()->first_name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -76,10 +76,13 @@
                             @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    User {{ Auth::user()->first_name }}
+                                    <img src="/storage/{{Auth::user()->user_image}}" alt="Foto Profil"  class = "rounded-circle"style= " height:32px; width:auto; margin-left:12em; ">
+                                    Selamat Datang User {{ Auth::user()->first_name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('editProfile') }}">
+                                        Update Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -89,6 +92,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
                                 </div>
                             </li>
                             @endif
