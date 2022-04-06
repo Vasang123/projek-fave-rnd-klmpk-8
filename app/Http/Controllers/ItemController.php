@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -10,11 +11,11 @@ class ItemController extends Controller
 {
 
     public function create(){
-        return view('admin.create');
+        $kategori = Kategori::get();
+        return view('admin.create', compact('kategori'));
     }
 
     public function store(Request $request){
-
         $validateData = $request->validate([
             'item_name' => 'required|max:255',
             'item_desc' => 'required',
@@ -35,8 +36,9 @@ class ItemController extends Controller
         return redirect('/admin')->with('status','Barang Berhasil Ditambahkan');
     }
     public function edit($id){
+        $kategori = Kategori::get();
         $item = Item::findOrFail($id);
-        return view('admin.update',  compact('item'));
+        return view('admin.update',  compact('item','kategori'));
     }
 
     public function update($id, Request $request){
@@ -63,10 +65,16 @@ class ItemController extends Controller
     }
 
     public function destroy($id){
-    $item = Item::findOrFail($id);
-    Storage::delete($item->item_image);
-    $item->delete();
-    return redirect('/admin')->with('status','Barang Berhasil Dihapus');
+        $item = Item::findOrFail($id);
+        Storage::delete($item->item_image);
+        $item->delete();
+        return redirect('/admin')->with('status','Barang Berhasil Dihapus');
+    }
+
+    public function show($id)
+    {
+        $item = Item::findOrFail($id);
+        return view('item.show', compact('item'));
     }
 }
 

@@ -32,11 +32,19 @@ Route::group(['middleware' => 'RoleAdmin'],function(){
     Route::get('/items/update/{id}',[App\Http\Controllers\ItemController::class, 'edit']);
     Route::put('/items/update/{id}',[App\Http\Controllers\ItemController::class, 'update'])->name('updateItems');
     Route::delete('/items/delete/{id}',[App\Http\Controllers\ItemController::class, 'destroy']);
-
+    Route::resource('/kategori', App\Http\Controllers\CategoryController::class);
+    Route::post('/kategori/create',[App\Http\Controllers\CategoryController::class, 'create'])->name('createKategori');
+    Route::delete('/kategori/delete/{id}',[App\Http\Controllers\CategoryController::class, 'destroy']);
+    Route::put('/pesanan/{id}',[App\Http\Controllers\OrderController::class, 'accept'])->name('terimaPesanan');
 });
 
 Route::group(['middleware' => 'RoleMember'],function(){
     Route::get('/member',[App\Http\Controllers\HomeController::class, 'member']);
     Route::get('/edit-profile',[App\Http\Controllers\UserController::class, 'edit'])->name('editProfile');
     Route::put('/update-profile',[App\Http\Controllers\UserController::class, 'update'])->name('updateProfile');
+    Route::get('/edit-password',[App\Http\Controllers\UserController::class, 'editPassword'])->name('editPassword');
+    Route::put('/update-password',[App\Http\Controllers\UserController::class, 'updatePassword'])->name('updatePassword');
+    Route::post('/pesanan/{id}',[App\Http\Controllers\OrderController::class, 'order'])->name('buatPesanan');
 });
+Route::get('/items/{id}',[App\Http\Controllers\ItemController::class, 'show'])->name('showItems');
+Route::get('/pesanan', [App\Http\Controllers\OrderController::class, 'index'])->name('indexPesanan');

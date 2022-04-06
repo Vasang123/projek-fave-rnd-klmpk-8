@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -78,6 +79,8 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'birth_date' => $data['birth_date'],
             'password' => Hash::make($data['password']),
+            'kode_user' => Str::random(7),
+
         ]);
     }
 }

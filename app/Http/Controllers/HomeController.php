@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,12 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $items = Item::all();
+        return view('home',compact('items'));
     }
     public function admin()
     {
+        $kategori = Kategori::all();
         $items = Item::all();
-        return view('admin.index',compact('items'));
+        return view('admin.index',compact('items', 'kategori'));
     }
     public function member()
     {

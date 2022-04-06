@@ -60,7 +60,13 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('admin') }}" role ="button">
-                                        Admin Page
+                                        Manage Items
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('kategori') }}" role ="button">
+                                        Manage Category
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('pesanan') }}" role ="button">
+                                        Lihat Pesanan
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -73,7 +79,7 @@
                                     </form>
                                 </div>
                             </li>
-                            @else
+                            @elseif (Auth::user()->role ==='member')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="/storage/{{Auth::user()->user_image}}" alt="Foto Profil"  class = "rounded-circle"style= " height:32px; width:auto; margin-left:12em; ">
@@ -82,6 +88,12 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('editProfile') }}">
                                         Update Profile
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('editPassword') }}">
+                                        Change Password
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('pesanan') }}" role ="button">
+                                        Lihat Pesanan
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -101,7 +113,6 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

@@ -16,4 +16,8 @@ class Item extends Model
         'item_desc',
         'item_type',
     ];
+    public function kategori()
+    {
+        return $this->belongsTo('App\Models\Kategori', 'item_type', 'id');
+    }
 }

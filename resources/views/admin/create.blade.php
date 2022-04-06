@@ -77,20 +77,18 @@
                         <div class="row mb-3">
                             <label for="item_type" class="col-md-4 col-form-label text-md-end">{{ __('Tipe Barang') }}</label>
                             <div class="form-floating col-md-6">
-                                <select id="item_type" class=" form-select form-control @error('item_type') is-invalid @enderror" name="item_type" value="{{ old('item_type') }}" required autocomplete="item_type" autofocus >
-                                  <option value="1">Tipe 1</option>
-                                  <option value="2">Tipe 2</option>
-                                  <option value="3">Tipe 3</option>
-                                  <option value="3">Tipe 4</option>
-                                  <option value="3">Tipe 5</option>
+                                <select name="item_type" class=" form-select form-control @error('item_type') is-invalid @enderror" name="item_type" required autocomplete="item_type" autofocus>
+                                    @foreach($kategori as $category)
+                                    <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
+                                    @endforeach
                                 </select>
                                 <label for="floatingSelect">Choose One Category</label>
-                                @error('item_type')
+                            </div>
+                            @error('item_type')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
-                              </div>
+                            @enderror
                         </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

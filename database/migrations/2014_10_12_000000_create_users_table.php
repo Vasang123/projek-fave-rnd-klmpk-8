@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('user_image')->default('uploads/avatars/default.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('kode_user');
             $table->rememberToken();
             $table->string('role')->default('member'); //member for user and admin for admin
             $table->timestamps();

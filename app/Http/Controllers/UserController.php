@@ -22,25 +22,32 @@ class UserController extends Controller
             'user_image' => 'required|image|file',
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.Auth::user()->id],
+        ]);
+        $name = $request->file('user_image')->store('/uploads/avatars');
+            auth()->user()->update([
+                'user_image' => $name,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+            ]);
+        return redirect('/home')->with('status','Profile Berhasil Diupdate');
+    }
+    public function editPassword(){
+        return view('member.update-password');
+    }
+    public function updatePassword(Request $request){
+        $request->validate([
             'current_password' => ['required', 'string', 'min:8'],
             'password' => ['required', 'string', 'confirmed',
              Password::min(8)->letters()->numbers()->mixedCase()->symbols()],
         ]);
         if(Hash::check($request->current_password, auth()->user()->password)){
-            $name = $request->file('user_image')->store('/uploads/avatars');
             auth()->user()->update([
-                'user_image' => $name,
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-            return redirect()->route('editProfile')->with('success', 'Profile updated successfully');
+        }else{
+            return redirect('/edit-password')->with('status','Current Password is Wrong');
         }
-        throw ValidationException::withMessages([
-            'current_password' => 'Current password is incorrect',
-        ]);
-        return redirect('/home')->with('status','Profile Berhasil Diupdate');
+
+        return redirect('/home')->with('status','Password Berhasil Diupdate');
     }
 }
