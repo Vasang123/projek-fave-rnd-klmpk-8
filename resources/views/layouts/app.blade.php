@@ -16,17 +16,20 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light" style="background-color: #AD8B73;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    BudimanStore
+                    <img src="{{ asset('images/Budiman_logo.png')}}" alt="Logo" class="me-4" style="height: 40px;"> 
+                    Budiman Store
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,6 +41,20 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #AD8B73; border-radius: 0px">
+                                <li><a class="dropdown-item" href="#">Kategori</a></li>
+                                <li><a class="dropdown-item" href="#">Kategori Kategori</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active me-2" aria-current="page" href="{{ url('pesanan') }}">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-2">|</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -58,7 +75,7 @@
                                     Selamat Datang Admin {{ Auth::user()->first_name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: #AD8B73; border-radius: 0px">
                                     <a class="dropdown-item" href="{{ url('admin') }}" role ="button">
                                         Manage Items
                                     </a>
@@ -82,12 +99,12 @@
                             @elseif (Auth::user()->role ==='member')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="/storage/{{Auth::user()->user_image}}" alt="Foto Profil"  class = "rounded-circle"style= " height:32px; width:auto; margin-left:12em; ">
-                                    Selamat Datang User {{ Auth::user()->first_name }}
+                                    <!-- <img src="/storage/{{Auth::user()->user_image}}" alt="Foto Profil"  class = "rounded-circle"style= " height:32px; width:auto; margin-left:12em; "> -->
+                                    Welcome {{ Auth::user()->first_name }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: #AD8B73; border-radius: 0px">
                                     <a class="dropdown-item" href="{{ route('editProfile') }}">
-                                        Update Profile
+                                        Edit Profile
                                     </a>
                                     <a class="dropdown-item" href="{{ route('editPassword') }}">
                                         Change Password
@@ -113,7 +130,7 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
