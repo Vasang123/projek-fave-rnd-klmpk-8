@@ -27,7 +27,7 @@
                 <th scope="row">ID-000{{$item->id}}</th>
                 <td>{{$item->item_name}}</td>
                 <td>
-                    <img src="{{asset('storage/' . $item->item_image)}}" width="200px" height="auto" ></td>
+                    <img src="{{asset('storage/images/'.$item->item_image)}}" width="200px" height="auto" ></td>
                 <td width="200px">{{$item->item_desc}}</td>
                 <td>Rp {{$item->item_price}}</td>
                 <td>{{$item->item_stock}}</td>

@@ -6,7 +6,7 @@
         @if(session('errorStatus'))
             <div class="alert alert-danger"><i class="uil uil-times me-2"></i>{{session('errorStatus')}}</div>
         @endif
-        <img src="{{asset('storage/' . $item->item_image)}}" class="w-100" >
+        <img src="{{asset('storage/images/'.$item->item_image)}}" class="w-100" >
         <span class="badge bg-primary mb-2">{{ $item->kategori->nama_kategori }}</span>
         <h1 class="fs-2">{{ $item->item_name }}</h1>
         <h1 class="fs-5 text-secondary">Rp. {{ number_format($item->item_price) }}</h1>
