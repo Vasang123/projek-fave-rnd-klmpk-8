@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+view()->composer('layouts.app', function ($view) {
+        $kategori = Kategori::all();
+        $view->with('kategori',$kategori);
+});
+// Route::get('/login', [App\Http\Controllers\LoginController::class, 'show']);
 
 
 
@@ -39,7 +45,7 @@ Route::group(['middleware' => 'RoleAdmin'],function(){
 });
 
 Route::group(['middleware' => 'RoleMember'],function(){
-    Route::get('/member',[App\Http\Controllers\HomeController::class, 'member']);
+    Route::get('/member',[App\Http\Controllers\HomeController::class, 'member'])->name('member');
     Route::get('/edit-profile',[App\Http\Controllers\UserController::class, 'edit'])->name('editProfile');
     Route::put('/update-profile',[App\Http\Controllers\UserController::class, 'update'])->name('updateProfile');
     Route::get('/edit-password',[App\Http\Controllers\UserController::class, 'editPassword'])->name('editPassword');

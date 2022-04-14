@@ -88,8 +88,10 @@
 </div>
 
 
+
+@include('layouts.footer')
+
 @endsection
 
 
 
-@extends('layouts.footer')
