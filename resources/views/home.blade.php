@@ -62,7 +62,7 @@
     </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         @foreach ($items as $item)
         <div class="col-xl-3 col-6 mb-3">

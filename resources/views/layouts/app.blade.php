@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #AD8B73;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     <img src="{{ asset('images/Budiman_logo.png')}}" alt="Logo" class="me-4" style="height: 40px;"> 
                     Budiman Store
                 </a>

@@ -3,22 +3,21 @@
 
 @section('content')
 <div class="container">
-    <h1>Halaman Update</h1>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @if (session('status'))
                     <h6 class="alert alet-success">{{session('status')}}</h6>
                 @endif
-                <div class="card-header">
-                    <h4>Tambah Barang</h4>
+                <div class="container">
+                    <h1 class="mt-5" style="color:#AD8B73">Edit Product</h1>
                 </div>
-                <div class="card-body">
+                <div class="container mt-5">
                     <form action="{{url('/items/update/'. $item->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row mb-3">
-                            <label for="item_name" class="col-md-4 col-form-label text-md-end">{{ __('Nama Barang') }}</label>
+                            <label for="item_name" class="col-md-4 col-form-label text-md-end d-flex justify-content-start ps-md-5"><b class="ps-md-5">{{ __('Name') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="item_name" type="text" class="form-control @error('item_name') is-invalid @enderror" name="item_name" value="{{ $item->item_name }}" required autocomplete="item_name" autofocus>
@@ -31,7 +30,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="item_image" class="col-md-4 col-form-label text-md-end">{{ __('Upload Gambar') }}</label>
+                            <label for="item_image" class="col-md-4 col-form-label text-md-end d-flex justify-content-start ps-md-5"> <b class="ps-md-5">{{ __('Upload Image') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="item_image" type="file" class="form-control @error('item_image') is-invalid @enderror" name="item_image"  required autofocus>
@@ -44,7 +43,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="item_desc" class="col-md-4 col-form-label text-md-end">{{ __('Deskripsi Barang') }}</label>
+                            <label for="item_desc" class="col-md-4 col-form-label text-md-end d-flex justify-content-start ps-md-5"><b class="ps-md-5">{{ __('Description Barang') }}</b></label>
                             <div class="form-floating col-md-6">
                                 <textarea id="item_desc"class="form-control"  @error('item_desc') is-invalid @enderror" name="item_desc" value="item_desc" required  autofocus>{{ $item->item_desc }}</textarea>
                                 <label for="floatingTextarea">Description</label>
@@ -56,7 +55,7 @@
                               </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="item_price" class="col-md-4 col-form-label text-md-end">{{ __('Harga Barang') }}</label>
+                            <label for="item_price" class="col-md-4 col-form-label text-md-end d-flex justify-content-start ps-md-5"><b class="ps-md-5">{{ __('Price') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="item_price" type="number" class="form-control @error('item_price') is-invalid @enderror" name="item_price" value="{{ $item->item_price }}" required autocomplete="item_price" autofocus>
@@ -69,7 +68,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="item_stock" class="col-md-4 col-form-label text-md-end">{{ __('Stock Barang') }}</label>
+                            <label for="item_stock" class="col-md-4 col-form-label text-md-end d-flex justify-content-start ps-md-5"><b class="ps-md-5">{{ __('Stock Barang') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="item_stock" type="number" class="form-control @error('item_stock') is-invalid @enderror" name="item_stock" value="{{ $item->item_stock }}" required autocomplete="item_stock" autofocus>
@@ -82,7 +81,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="item_type" class="col-md-4 col-form-label text-md-end">{{ __('Tipe Barang') }}</label>
+                            <label for="item_type" class="col-md-4 col-form-label text-md-end d-flex justify-content-start ps-md-5"><b class="ps-md-5">{{ __('Category') }}</b></label>
                             <div class="form-floating col-md-6">
                                 <select name="item_type" class=" form-select form-control @error('item_type') is-invalid @enderror" name="item_type" required autocomplete="item_type" autofocus>
                                     @foreach($kategori as $category)
@@ -97,10 +96,10 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="row mt-5">
+                            <div class="col-md-10 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Tambah') }}
+                                    {{ __('Submit') }}
                                 </button>
                             </div>
                         </div>

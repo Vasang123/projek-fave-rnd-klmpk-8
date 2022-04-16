@@ -1,4 +1,4 @@
-<div class="mt-5" style="background-color: #AD8B73">
+<div class="" style="background-color: #AD8B73">
 <div class="container pt-4">
     <div class="row">
         <div class="col">
@@ -28,24 +28,24 @@
                         <span href="" style="text-decoration:none;color:#000000"><del>Shipment</del></span>
                     </div>
                     <div class="d-flex justify-content-start mb-2">
-                        <a href="" style="text-decoration:none;color:#000000">Order Status</a>
+                        <a href="{{ url('/pesanan') }}" style="text-decoration:none;color:#000000">Order Status</a>
                     </div>
                 </div>
                 <div class="col" style="padding-top:50px">
                     <div class="d-flex justify-content-start mb-2">
-                        <a href="" style="text-decoration:none;color:#000000">Your Account</a>
+                        <a href="{{ url('/member') }}" style="text-decoration:none;color:#000000">Your Account</a>
                     </div>
                     <div class="d-flex justify-content-start mb-2">
-                        <a href="" style="text-decoration:none;color:#000000">Account Name</a>
+                        <a href="{{ url('/member') }}" style="text-decoration:none;color:#000000">Account Name</a>
                     </div>
                     <div class="d-flex justify-content-start mb-2">
-                        <a href="" style="text-decoration:none;color:#000000">Payments</a>
+                        <span href="" style="text-decoration:none;color:#000000"><del>Payments</del></span>
                     </div>
                     <div class="d-flex justify-content-start mb-2">
                         <span href="" style="text-decoration:none;color:#000000"><del>Invoices</del></span>
                     </div>
                     <div class="d-flex justify-content-start mb-2">
-                        <a href="" style="text-decoration:none;color:#000000">Cart</a>
+                        <a href="{{ url('/pesanan') }}" style="text-decoration:none;color:#000000">Cart</a>
                     </div>
                 </div>
             </div>
