@@ -173,8 +173,7 @@
         </div>
     </div>
 </div>
-@endsection
-
-@include('layouts.footer')
-
+<div>
+    @include('layouts.footer')
+</div>
 @endsection
