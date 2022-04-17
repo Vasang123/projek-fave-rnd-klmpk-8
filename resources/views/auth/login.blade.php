@@ -65,7 +65,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
-                                                <button type="submit" class="btn px-5 py-2 mb-1" style="background-color: #FFFFFF; border-radius: 10px; font-size: 15px;">
+                                                <button type="submit" class="btn px-5 py-2 mb-1" href="{{ route('home') }}" style="background-color: #FFFFFF; border-radius: 10px; font-size: 15px;">
                                                     {{ __('Log In') }}
                                                 </button>
                 

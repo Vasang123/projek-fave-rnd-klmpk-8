@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Halaman Update</h1>
+<div style="background-color:#E3CAA5">
+<div class="d-flex container">
+<div class="container card mt-5 mb-5" style="border-radius:20px">
     <div class="card-body">
         @if (session('status'))
             <div class="alert alert-success" role="alert">
@@ -11,10 +12,9 @@
         @endif
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card-header">
-                <h4>Update Profile</h4>
-            </div>
+        <div class="col-md-12">
+        <h1 class="ps-5" style="color:#AD8B73">Change Password</h1>
+        <hr>
             <div class="card-body">
                 <form action="{{route('updatePassword')}}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
@@ -54,18 +54,20 @@
                     </div>
                     </div>
 
-                    <div class="row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Update Profile') }}
+                    <div class="row mb-5">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary ms-1">
+                                {{ __('Change Password') }}
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
+</div>
         </div>
     </div>
 </div>
-
-
+</div>
+@include('layouts.footer')
 @endsection

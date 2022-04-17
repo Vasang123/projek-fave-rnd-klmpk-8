@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="d-flex justify-content-center py-5" style="background-color: #E3CAA5;">
+<div class="d-flex justify-content-center py-5" style="background-color: #E3CAA5; height:500px">
     <div class="col-md-8">
         @if(session('status'))
             <div class="alert alert-success"><i class="uil uil-check me-1"></i>{{session('status')}}</div>
