@@ -14,7 +14,7 @@
                     @method('PUT')
                     @csrf
                     <div class="row justify-content-center">
-                        <div class="col-4 d-flex justify-content-center align-items-center">
+                        <div class="col-4 d-flex justify-content-center">
                             <img src="/storage/{{Auth::user()->user_image}}" alt="Foto Profil"  class = "rounded-circle"style= " height:150px; width:auto;  ">
                         </div>
                         <div class="col-8">
