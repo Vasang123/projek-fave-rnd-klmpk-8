@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #AD8B73;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     <img src="{{ asset('images/Budiman_logo.png')}}" alt="Logo" class="me-4" style="height: 40px;"> 
                     Budiman Store
                 </a>
@@ -44,9 +44,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #AD8B73; border-radius: 0px">
-                                <li><a class="dropdown-item" href="#">Kategori</a></li>
-                                <li><a class="dropdown-item" href="#">Kategori Kategori</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            @foreach ($kategori as $kategori)
+                                <li><a class="dropdown-item" href="#">{{ $kategori->nama_kategori }}</a></li>
+                             @endforeach
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -103,6 +103,9 @@
                                     Welcome {{ Auth::user()->first_name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: #AD8B73; border-radius: 0px">
+                                    <a class="dropdown-item" href="{{ route('member') }}">
+                                        My Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('editProfile') }}">
                                         Edit Profile
                                     </a>

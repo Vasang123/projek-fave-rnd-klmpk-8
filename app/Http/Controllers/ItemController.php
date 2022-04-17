@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Kategori;
+use Faker\Core\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 class ItemController extends Controller
@@ -24,7 +26,8 @@ class ItemController extends Controller
             'item_type' => 'required',
             'item_image' => 'required|image|file|max:10024',
         ]);
-        $name = $request->file('item_image')->store('/images');
+        $name = $request->file('item_image')->getClientOriginalName();
+        $request->file('item_image')->storeAs('public/images', $name);
         Item::create([
             'item_name' => $request->item_name,
             'item_image' => $name,
@@ -51,8 +54,11 @@ class ItemController extends Controller
             'item_image' => 'required|image|file|max:10024',
         ]);
         $item =  Item::findOrFail($id);
-        Storage::delete($item->item_image);
-        $name = $request->file('item_image')->store('/images');
+        $image = '/storage/images/' . $item->item_image;
+        $path = str_replace('\\', '/', public_path());
+        unlink($path . $image);
+        $name = $request->file('item_image')->getClientOriginalName();
+        $request->file('item_image')->storeAs('public/images', $name);
         $item->update([
             'item_name' => $request->item_name,
             'item_image' => $name,
@@ -66,15 +72,18 @@ class ItemController extends Controller
 
     public function destroy($id){
         $item = Item::findOrFail($id);
-        Storage::delete($item->item_image);
-        $item->delete();
+        $image = '/storage/images/' . $item->item_image;
+        $path = str_replace('\\', '/', public_path());
+        unlink($path . $image);
+        Item::destroy($id);
         return redirect('/admin')->with('status','Barang Berhasil Dihapus');
     }
 
     public function show($id)
     {
         $item = Item::findOrFail($id);
-        return view('item.show', compact('item'));
+        $contents = Storage::get($item->item_image);
+        return view('item.show', compact('item'), compact('contents'));
     }
 }
 

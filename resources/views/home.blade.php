@@ -10,7 +10,7 @@
 </div>
 <div class="bg-image img-fluid d-flex align-items-center" style="background-image: url({{ asset('images/Hero_BG.png')}}); height: 1440px;background-position:center;background-repeat:no-repeat;background-size:cover">
     <!-- <img src="{{ asset('images/Hero_BG.png')}}" alt="" class="img-fluid"> -->
-    
+
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
         <h1>Welcome to</h1>
@@ -18,7 +18,7 @@
         <a href="#category" type="button" class="btn" style="background-color: #AD8B73; border-radius: 10px; color: #FFFFFF;">Shop Now</a>
         </div>
         <div class="col-lg-2"></div>
-    
+
 </div>
 
 <div class="container mt-5">
@@ -62,12 +62,12 @@
     </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         @foreach ($items as $item)
         <div class="col-xl-3 col-6 mb-3">
             <div class="col-md-12 shadow-sm">
-                <img src="{{asset('storage/' . $item->item_image)}}" class="w-100" >
+                <img src="{{asset('storage/images/'.$item->item_image)}}" class="w-100" >
                 <div class="card-body">
                     <h5 class="card-title">{{ $item->item_name }}</h5>
                     <p class="card-text">Rp. {{ number_format($item->item_price) }}</p>
@@ -88,8 +88,10 @@
 </div>
 
 
+
+@include('layouts.footer')
+
 @endsection
 
 
 
-@extends('layouts.footer')
