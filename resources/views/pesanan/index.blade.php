@@ -2,7 +2,7 @@
 
 
 @section('content')
-<h1>Halaman Pesanan</h1><div class="d-flex justify-content-center mt-5">
+<div class="d-flex justify-content-center py-5" style="background-color: #E3CAA5;">
     <div class="col-md-8">
         @if(session('status'))
             <div class="alert alert-success"><i class="uil uil-check me-1"></i>{{session('status')}}</div>
@@ -64,7 +64,7 @@
                 </table>
             @endif
         @elseif(Auth::user()->role == 'member')
-            <h1 class="fs-3 mb-5"><i class="uil uil-history me-1"></i> PESANAN KAMU</h1>
+            <h1 class="fs-3 mb-5"><i class="uil uil-history me-1"></i> Your Cart</h1>
             @if($pesanan->count() == null)
                 <div class="alert alert-warning" role="alert">
                     Belum ada pesanan
@@ -115,6 +115,9 @@
             @endif
         @endif
     </div>
+</div>
+<div>
+    @include('layouts.footer')
 </div>
 {{--  --}}
 @endsection

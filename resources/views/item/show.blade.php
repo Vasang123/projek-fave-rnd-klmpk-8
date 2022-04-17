@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-md-12 d-flex justify-content-center my-4">
-    <div class="col-md-5">
+<div class="col-md-12 d-flex justify-content-center py-5" style="background-color: #E3CAA5;">
+    <div class="col-md-5 p-3" style="background-color: white;">
         @if(session('errorStatus'))
             <div class="alert alert-danger"><i class="uil uil-times me-2"></i>{{session('errorStatus')}}</div>
         @endif
@@ -18,12 +18,15 @@
                 {{ $item->item_stock }}
             @endif
         </h1>
-
+        
         @guest
-            <a href="{{ route('login') }}" class="btn btn-success btn-sm text-white fs-5">Pesan Sekarang</a>
+            <a href="{{ route('login') }}" class="btn btn-sm text-white fs-5" style="background-color: #CEAB93;">Pesan Sekarang</a>
         @else
             @if(Auth::user()->role == 'member')
-                <a href="#" class="btn btn-success btn-sm text-white fs-5" data-bs-toggle="modal" data-bs-target="#pesanBarangModal">Pesan Sekarang</a>
+            <div class="container">
+                <a href="#" class="btn btn-sm fs-5 px-4 me-2" style="background-color: #FFFFFF; border: 2px solid #CEAB93; color:black; font-weight:bold;">Add to Cart</a>
+                <a href="#" class="btn btn-sm text-black fs-5 px-4" data-bs-toggle="modal" data-bs-target="#pesanBarangModal" style="background-color: #CEAB93; font-weight:bold;">Buy Now</a>
+            </div>
 
                 <div class="modal fade" id="pesanBarangModal" tabindex="-1" aria-labelledby="pesanBarangModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -81,5 +84,21 @@
             @endif
         @endguest
     </div>
+</div>
+
+<!-- Description -->
+<div class="pb-5" style="background-color: #E3CAA5;">
+    <div class="container" style="background-color:white;">
+        <div class="px-3 py-4">
+            <h3 style="font-weight:bold;color:#AD8B73;">Description</h3>
+            <p class="fs-5 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, laboriosam cum? Autem, explicabo illum? Veniam sunt doloribus ex explicabo fugiat? Recusandae doloribus similique quidem necessitatibus possimus quae commodi repudiandae cumque.
+            Recusandae, doloribus earum. Sint dolore obcaecati temporibus similique id dicta! Impedit, aperiam eum. Vitae labore, at hic iste dolores quaerat aliquam rem nulla, sapiente maxime dignissimos, impedit suscipit nostrum quisquam.
+            Tenetur libero, et aperiam aut repellendus quidem distinctio voluptas ea voluptatum eveniet eius perferendis nulla maiores similique iure officiis laborum animi deleniti recusandae? Nisi ipsa vero atque porro aut assumenda!</p>
+        </div>
+    </div>
+</div>
+
+<div>
+    @include('layouts.footer')
 </div>
 @endsection
