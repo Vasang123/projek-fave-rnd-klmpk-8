@@ -24,7 +24,6 @@
         @else
             @if(Auth::user()->role == 'member')
             <div class="container">
-                <a href="#" class="btn btn-sm fs-5 px-4 me-2" style="background-color: #FFFFFF; border: 2px solid #CEAB93; color:black; font-weight:bold;">Add to Cart</a>
                 <a href="#" class="btn btn-sm text-black fs-5 px-4" data-bs-toggle="modal" data-bs-target="#pesanBarangModal" style="background-color: #CEAB93; font-weight:bold;">Buy Now</a>
             </div>
 
